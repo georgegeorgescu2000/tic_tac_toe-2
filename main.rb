@@ -25,23 +25,20 @@ class Table
 
   def table_print
     for i in 0..2
-      @@table[i].each do |x| print "|#{x}|" end
+      @@table[i].each do |x| print "| #{x} |" end
       puts
     end
   end
 
-  def numberisplay
+  def numberisplay  
     for i in 0..2
       @@table[i].each do |numberintable|
-        if @number == numberintable
-          #puts @@table
-          #  puts "#{@number} number play"
-          #  puts "#{numberintable} number table"
+        if @number == numberintable         
           return "da"
         end
       end
     end
-    return "#{@@table.include? (@number)}"
+    return "#{@@table.flatten.include? (@number)}"
   end
 
   def table_place_play
@@ -69,7 +66,8 @@ class Table
           puts "choose number from 1 to 9 or number has not been played "
         end
       else
-        puts "no number"
+        puts "No number in game . IS DRAW"
+        
       end
     end
     if @game == 2
@@ -96,7 +94,7 @@ class Table
           puts "choose number from 1 to 9"
         end
       else
-        puts "no number"
+         puts "No number in game . IS DRAW"
       end
     end
     table_print
@@ -155,8 +153,7 @@ class GamePlay
       puts " Number is play chose another number"
       playerchose = gets.chomp.to_i
       break
-      # verificnumber = Table.new(playerchose,0)
-      # verificnumber.numberisplay
+     
     end
     tablechose = Table.new(playerchose, game)
     tablechose.table_place_play
@@ -175,9 +172,7 @@ class GamePlay
     while verificnumber.numberisplay == "false"
       puts " Number is play chose another number"
       playerchose = gets.chomp.to_i
-      break
-      # verificnumber = Table.new(playerchose,0)
-      # verificnumber.numberisplay
+      break     
     end
     tablechose = Table.new(playerchose, game)
     tablechose.table_place_play
